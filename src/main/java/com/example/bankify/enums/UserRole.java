@@ -1,7 +1,7 @@
 package com.example.bankify.enums;
 
-public enum UserRole {
-    ADMIN,  // Acesso completo ao sistema, pode gerenciar contas e usuários
-    CLIENTE // Acesso limitado, pode gerenciar apenas sua conta e transações
 
+public enum UserRole {
+    ADMIN,  // Full access to the system, can manage accounts and users
+    CLIENT  // Limited access, can manage only their own account and transactions
 }

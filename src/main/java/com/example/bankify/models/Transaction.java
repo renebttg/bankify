@@ -1,8 +1,7 @@
 package com.example.bankify.models;
 
-
-import com.example.bankify.enums.StatusTransacao;
-import com.example.bankify.enums.TipoTransacao;
+import com.example.bankify.enums.TransactionStatus;
+import com.example.bankify.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,28 +23,28 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "valor", nullable = false, precision = 19, scale = 2)
-    private BigDecimal valor;
+    @Column(name = "amount", nullable = false, precision = 19, scale = 2)
+    private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
-    private TipoTransacao tipo;
+    @Column(name = "type", nullable = false)
+    private TransactionType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "conta_origem_id", nullable = false)
-    private Account contaOrigem;
+    @JoinColumn(name = "source_account_id", nullable = false)
+    private Account sourceAccount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "conta_destino_id")
-    private Account contaDestino;
+    @JoinColumn(name = "destination_account_id")
+    private Account destinationAccount;
 
-    @Column(name = "data_transacao", nullable = false)
-    private LocalDateTime dataTransacao;
+    @Column(name = "transaction_date", nullable = false)
+    private LocalDateTime transactionDate;
 
-    @Column(name = "descricao", length = 255)
-    private String descricao;
+    @Column(name = "description", length = 255)
+    private String description;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private StatusTransacao status;
+    private TransactionStatus status;
 }

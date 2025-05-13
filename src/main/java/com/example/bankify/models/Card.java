@@ -1,6 +1,6 @@
 package com.example.bankify.models;
 
-import com.example.bankify.enums.TipoCartao;
+import com.example.bankify.enums.CardType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,33 +25,33 @@ public class Card {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "numero_cartao", nullable = false, unique = true, length = 16)
-    private String numeroCartao;
+    @Column(name = "card_number", nullable = false, unique = true, length = 16)
+    private String cardNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
-    private TipoCartao tipo; // CREDITO, DEBITO
+    @Column(name = "type", nullable = false)
+    private CardType type; // CREDIT, DEBIT
 
-    @Column(name = "limite", precision = 19, scale = 2)
-    private BigDecimal limite;
+    @Column(name = "limit", precision = 19, scale = 2)
+    private BigDecimal limit;
 
-    @Column(name = "saldo_disponivel", precision = 19, scale = 2)
-    private BigDecimal saldoDisponivel;
+    @Column(name = "available_balance", precision = 19, scale = 2)
+    private BigDecimal availableBalance;
 
-    @Column(name = "data_validade", nullable = false)
-    private LocalDate dataValidade;
+    @Column(name = "expiration_date", nullable = false)
+    private LocalDate expirationDate;
 
     @Column(name = "cvv", nullable = false, length = 4)
     private String cvv;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "conta_id", nullable = false)
-    private Account conta;
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
 
     @Column(name = "status", nullable = false)
     private boolean status;
 
     @CreationTimestamp
-    @Column(name = "data_emissao", nullable = false, updatable = false)
-    private LocalDateTime dataEmissao;
+    @Column(name = "issue_date", nullable = false, updatable = false)
+    private LocalDateTime issueDate;
 }

@@ -1,6 +1,6 @@
 package com.example.bankify.models;
 
-import com.example.bankify.enums.TipoConta;
+import com.example.bankify.enums.AccountType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,26 +23,26 @@ public class Account {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "numero_conta", nullable = false, unique = true, length = 20)
-    private String numeroConta;
+    @Column(name = "account_number", nullable = false, unique = true, length = 20)
+    private String accountNumber;
 
-    @Column(name = "agencia", nullable = false, length = 10)
-    private String agencia;
+    @Column(name = "agency", nullable = false, length = 10)
+    private String agency;
 
-    @Column(name = "saldo", nullable = false, precision = 19, scale = 2)
-    private BigDecimal saldo;
+    @Column(name = "balance", nullable = false, precision = 19, scale = 2)
+    private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_conta", nullable = false)
-    private TipoConta tipoConta;
+    @Column(name = "account_type", nullable = false)
+    private AccountType accountType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Customer cliente;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @Column(name = "status", nullable = false)
     private Boolean status;
 
-    @Column(name = "data_criacao", nullable = false)
-    private LocalDateTime dataCriacao;
+    @Column(name = "creation_date", nullable = false)
+    private LocalDateTime creationDate;
 }

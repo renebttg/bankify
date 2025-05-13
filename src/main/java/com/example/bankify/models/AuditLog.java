@@ -22,16 +22,16 @@ public class AuditLog {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "usuario", nullable = false, length = 100)
-    private String usuario;
+    @Column(name = "user", nullable = false, length = 100)
+    private String user;
 
-    @Column(name = "acao", nullable = false, length = 255)
-    private String acao;
+    @Column(name = "action", nullable = false, length = 255)
+    private String action;
 
     @CreationTimestamp
-    @Column(name = "data_hora", nullable = false, updatable = false)
-    private LocalDateTime dataHora;
+    @Column(name = "timestamp", nullable = false, updatable = false)
+    private LocalDateTime timestamp;
 
-    @Column(name = "ip_origem", length = 50)
-    private String ipOrigem;
+    @Column(name = "source_ip", length = 50)
+    private String sourceIp;
 }

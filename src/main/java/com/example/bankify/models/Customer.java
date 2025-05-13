@@ -24,8 +24,8 @@ public class Customer {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", nullable = false, length = 100)
-    private String nome;
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
@@ -33,26 +33,26 @@ public class Customer {
     @Column(name = "cpf", nullable = false, unique = true, length = 11)
     private String cpf;
 
-    @Column(name = "senha", nullable = false)
-    private String senha;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-    @Column(name = "telefone", length = 15)
-    private String telefone;
+    @Column(name = "phone", length = 15)
+    private String phone;
 
-    @Column(name = "endereco", length = 255)
-    private String endereco;
+    @Column(name = "address", length = 255)
+    private String address;
 
     @CreationTimestamp
-    @Column(name = "data_cadastro", updatable = false)
-    private LocalDateTime dataCadastro;
+    @Column(name = "registration_date", updatable = false)
+    private LocalDateTime registrationDate;
 
     @UpdateTimestamp
-    @Column(name = "data_atualizacao")
-    private LocalDateTime dataAtualizacao;
+    @Column(name = "last_update")
+    private LocalDateTime lastUpdate;
 
     @Column(name = "status", nullable = false)
     private boolean status;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Account> contas;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Account> accounts;
 }
