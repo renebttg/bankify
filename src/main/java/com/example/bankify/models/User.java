@@ -44,7 +44,7 @@ public class User implements UserDetails {
     @Column(name = "role")
     private Set<UserRole> roles;
 
-    // Métodos do UserDetails (Spring Security)
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
@@ -54,17 +54,17 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // Ajuste para regras futuras, se necessário
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return status; // True = Ativa, False = Bloqueada
+        return status;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Ajuste para regras futuras, se necessário
+        return true;
     }
 
     @Override
